@@ -1,0 +1,53 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.flex{
+  display: flex;
+  justify-content: center;
+}
+
+.form-btn{
+  display: inline-block;
+}
+
+.form-btn button{
+  padding: 0 30px;
+}
+
+.form-container{
+  width: 300px;
+  position: relative;
+  text-align: center;
+  height: 350px;
+  padding: 10px;
+  overflow-x: hidden;
+}
+
+.form-container form{
+  position: absolute;
+  width: 100%;
+}
+
+#loginForm{
+  left: 0;
+  padding: 10px;
+}
+
+#signupForm{
+  left: 300px;
+  padding: 10px;
+}
+
+input{
+  margin-bottom: 20px !important;
+}
+
+hr{
+  height: 3px;
+  width: 100px;
+  margin-bottom: 8px !important;
+  transform: translateX(0);
+}
