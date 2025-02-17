@@ -7,6 +7,8 @@
 .flex{
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .form-btn{
@@ -21,14 +23,16 @@
   width: 300px;
   position: relative;
   text-align: center;
-  height: 350px;
+  min-height: 400px;
   padding: 10px;
   overflow-x: hidden;
+  border-radius: 5px;
 }
 
 .form-container form{
   position: absolute;
   width: 100%;
+  transition: .8s;
 }
 
 #loginForm{
@@ -48,6 +52,7 @@ input{
 hr{
   height: 3px;
   width: 100px;
-  margin-bottom: 8px !important;
+  margin: 8px 0 !important;
   transform: translateX(0);
+  transition: .8s;
 }
