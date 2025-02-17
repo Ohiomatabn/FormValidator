@@ -10,10 +10,10 @@
   <body class="bg-dark">
     <div class="container flex">
       <div class="form-container bg-light">
-        <div class="form-btn mb-5">
-          <button class="btn">Login</button>
-          <button class="btn">Register</button>
-          <hr class="bg-danger text-danger" />
+        <div class="form-btn mb-3">
+          <button class="btn" id="login-btn">Login</button>
+          <button class="btn" id="register-btn">Register</button>
+          <hr class="bg-danger text-danger" id="indicator" />
         </div>
         <form id="loginForm">
           <input
@@ -21,25 +21,27 @@
             class="form-control"
             placeholder="Email Address"
           />
-          <input
-            type="password"
-            class="form-control"
-            placeholder="Email Address"
-          />
+          <input type="password" class="form-control" placeholder="Password" />
           <button class="btn btn-danger form-control">Login</button>
         </form>
         <form id="signupForm">
+          <input type="text" class="form-control" placeholder="Username" />
           <input
             type="email"
             class="form-control"
             placeholder="Email Address"
           />
+          <input type="password" class="form-control" placeholder="Password" />
           <input
             type="password"
             class="form-control"
-            placeholder="Email Address"
+            placeholder="Re-enter Password"
           />
-          <button class="btn form-control bg-danger">Register</button>
+          <input type="checkbox" name="view-password" id="view-password" />
+          <span id="password-toggle">Show Password</span>
+          <button class="btn form-control bg-danger text-white">
+            Register
+          </button>
         </form>
       </div>
     </div>
