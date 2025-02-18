@@ -23,10 +23,14 @@ function login(){
 
 function loginPasswordToggle(){
   //Check if password type is password and set the type to text or if the type is text set it to password
+  const toggleContent = document.getElementById('login-toggle-content'); 
+
   if(loginPassword.type === "password"){
     loginPassword.type = 'text';
+    toggleContent.innerText = 'Hide Password';
   }else if (loginPassword.type === "text"){
     loginPassword.type = 'Password';
+    toggleContent.innerText = 'Show Password'
   }
 }
 
@@ -43,12 +47,15 @@ function register(){
 
 function registerPasswordToggle(){
     //Check if password type is password and set the type to text or if the type is text set it to password
+    const toggleContent = document.getElementById('register-toggle-content');
   if (registerPassword1.type === "password"){
     registerPassword1.type = 'text';
     registerPassword2.type = 'text';
+    toggleContent.textContent = 'Hide password';
   } else if(registerPassword1.type === "text"){
     registerPassword1.type = 'password';
     registerPassword2.type = 'password';
+    toggleContent.textContent = 'Show password';
   }
 }
 
