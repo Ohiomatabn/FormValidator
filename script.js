@@ -4,8 +4,13 @@ const registerBtn = document.getElementById('register-btn');
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
 const indicator = document.getElementById('indicator');
+const loginPassword = document.getElementById('loginPassword');
+const registerPassword1 = document.getElementById('password1');
+const registerPassword2 = document.getElementById('password2');
+const passwordVisibilityLogin = document.querySelector('.login-password-toggle');
+const passwordVisibilityregister = document.querySelector('.register-password-toggle');
 
-// Login Form Function
+// Login Form Functions
 function login(){
   //Translate login form and signup form in the X axis to 0 when login function is called
 
@@ -16,6 +21,16 @@ function login(){
   indicator.style.transform = 'translateX(0px)';
 }
 
+function loginPasswordToggle(){
+  //Check if password type is password and set the type to text or if the type is text set it to password
+  if(loginPassword.type === "password"){
+    loginPassword.type = 'text';
+  }else if (loginPassword.type === "text"){
+    loginPassword.type = 'Password';
+  }
+}
+
+//Register Form Functions
 function register(){
   //Translate login form and signup form  in the X axis to -300px when login function is called
 
@@ -26,6 +41,19 @@ function register(){
   indicator.style.transform = 'translateX(115px)';
 }
 
+function registerPasswordToggle(){
+    //Check if password type is password and set the type to text or if the type is text set it to password
+  if (registerPassword1.type === "password"){
+    registerPassword1.type = 'text';
+    registerPassword2.type = 'text';
+  } else if(registerPassword1.type === "text"){
+    registerPassword1.type = 'password';
+    registerPassword2.type = 'password';
+  }
+}
+
 //Click Event Handlers
 loginBtn.addEventListener('click', login);
 registerBtn.addEventListener('click', register);
+passwordVisibilityLogin.addEventListener('click', loginPasswordToggle);
+passwordVisibilityregister.addEventListener('click', registerPasswordToggle);
