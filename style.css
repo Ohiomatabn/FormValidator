@@ -33,6 +33,8 @@
   position: absolute;
   width: 100%;
   transition: .8s;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 #loginForm{
