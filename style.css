@@ -58,3 +58,7 @@ hr{
   transform: translateX(0);
   transition: .8s;
 }
+
+.toggle{
+  cursor: pointer;
+}
