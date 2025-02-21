@@ -88,7 +88,36 @@ function validateUsername (){
   }
 }
 
+// validate Password
+function validatePassword(password){
+  if(password.value === '' || password.value === ' ' || password.value.length < 8){
+    password.classList += ' error';
+    password.classList.remove('success');
+    return false;
+  } else{
+    password.classList += ' success';
+    password.classList.remove('error');
+    return true;
+  }
+}
 
+function comparePasswords(){
+  let password1 = document.getElementById('password1');
+  let password2 = document.getElementById('password2');
+  if(password1.value !== password2.value){
+    password1.classList += ' error';
+    password2.classList += ' error';
+    password1.classList.remove('success');
+    password2.classList.remove('success');
+    return false;
+  } else{
+    password1.classList += ' success';
+    password2.classList += ' success';
+    password1.classList.remove('error');
+    password2.classList.remove('error');
+    return true;
+  }
+}
 
 //Click Event Handlers
 loginBtn.addEventListener('click', login);
@@ -98,12 +127,19 @@ passwordVisibilityregister.addEventListener('click', registerPasswordToggle);
 registrationSumbitBtn.addEventListener('click', (e) =>{
   e.preventDefault();
   let email = document.getElementById('register-email');
+  let password1 = document.getElementById('password1');
+  let password2 = document.getElementById('password2');
   validateUsername();
   validateEmail(email);
+  validatePassword(password1);
+  validatePassword(password2);
+  comparePasswords();
 });
 
 loginSumbitBtn.addEventListener('click', (e) =>{
   e.preventDefault();
   let email = document.getElementById('login-email');
+  let password = document.getElementById('loginPassword');
   validateEmail(email);
+  validatePassword(password);
 });
