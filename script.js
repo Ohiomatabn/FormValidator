@@ -1,14 +1,16 @@
 //Variable
-const loginBtn = document.getElementById('login-btn');
-const registerBtn = document.getElementById('register-btn');
-const loginForm = document.getElementById('loginForm');
-const signupForm = document.getElementById('signupForm');
-const indicator = document.getElementById('indicator');
-const loginPassword = document.getElementById('loginPassword');
-const registerPassword1 = document.getElementById('password1');
-const registerPassword2 = document.getElementById('password2');
-const passwordVisibilityLogin = document.querySelector('.login-password-toggle');
-const passwordVisibilityregister = document.querySelector('.register-password-toggle');
+const loginBtn = document.getElementById('login-btn'),
+      registerBtn = document.getElementById('register-btn'),
+       loginForm = document.getElementById('loginForm'),
+       signupForm = document.getElementById('signupForm'),
+       indicator = document.getElementById('indicator'),
+       loginPassword = document.getElementById('loginPassword'),
+       registerPassword1 = document.getElementById('password1'),
+       registerPassword2 = document.getElementById('password2'),
+       passwordVisibilityLogin = document.querySelector('.login-password-toggle'),
+       passwordVisibilityregister = document.querySelector('.register-password-toggle'),
+       registrationSumbitBtn = document.getElementById('register-submit-btn');
+       loginSumbitBtn = document.getElementById('login-submit-btn');
 
 // Login Form Functions
 function login(){
@@ -59,8 +61,32 @@ function registerPasswordToggle(){
   }
 }
 
+//Validate Email
+function validateEmail(email){
+  if (!email.value.match(/(@)/) || !email.value.match(/(.)/) || !email.value.match(/(com)/)){
+    email.classList += ' error';
+    email.classList.remove('success');
+    return false;
+  } else{
+    email.classList.remove('error');
+    email.classList += ' success';
+    return true;
+  }
+}
+
 //Click Event Handlers
 loginBtn.addEventListener('click', login);
 registerBtn.addEventListener('click', register);
 passwordVisibilityLogin.addEventListener('click', loginPasswordToggle);
 passwordVisibilityregister.addEventListener('click', registerPasswordToggle);
+registrationSumbitBtn.addEventListener('click', (e) =>{
+  e.preventDefault();
+  let email = document.getElementById('register-email');
+  validateEmail(email);
+});
+
+loginSumbitBtn.addEventListener('click', (e) =>{
+  e.preventDefault();
+  let email = document.getElementById('login-email');
+  validateEmail(email);
+});
