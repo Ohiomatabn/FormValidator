@@ -74,6 +74,22 @@ function validateEmail(email){
   }
 }
 
+//Validate Username
+function validateUsername (){
+  let username = document.getElementById('username');
+  if(username.value === '' || username.value === ' '){
+   username.classList += ' error';
+   username.classList.remove('success');
+   return false;
+  } else{
+    username.classList += ' success';
+    username.classList.remove('error');
+    return true;
+  }
+}
+
+
+
 //Click Event Handlers
 loginBtn.addEventListener('click', login);
 registerBtn.addEventListener('click', register);
@@ -82,6 +98,7 @@ passwordVisibilityregister.addEventListener('click', registerPasswordToggle);
 registrationSumbitBtn.addEventListener('click', (e) =>{
   e.preventDefault();
   let email = document.getElementById('register-email');
+  validateUsername();
   validateEmail(email);
 });
 
