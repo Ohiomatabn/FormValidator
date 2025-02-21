@@ -19,6 +19,7 @@
           <input
             type="email"
             class="form-control"
+            id="login-email"
             placeholder="Email Address"
           />
           <p id="login-email-error" class="text-center fs-6 text-danger"></p>
@@ -37,10 +38,17 @@
           />
           <span id="login-toggle-content">Show Password</span>
 
-          <button class="btn btn-danger form-control">Login</button>
+          <button class="btn btn-danger form-control" id="login-submit-btn">
+            Login
+          </button>
         </form>
         <form id="signupForm">
-          <input type="text" class="form-control" placeholder="Username" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            id="username"
+          />
 
           <p
             id="sigunp-username-error"
@@ -51,6 +59,7 @@
             type="email"
             class="form-control"
             placeholder="Email Address"
+            id="register-email"
           />
 
           <p id="signup-email-error" class="text-center fs-6 text-danger"></p>
@@ -84,7 +93,10 @@
             >Show Password</span
           >
 
-          <button class="btn form-control bg-danger text-white">
+          <button
+            class="btn form-control bg-danger text-white"
+            id="register-submit-btn"
+          >
             Register
           </button>
         </form>
