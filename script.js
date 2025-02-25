@@ -62,14 +62,20 @@ function registerPasswordToggle(){
 }
 
 //Validate Email
-function validateEmail(email){
+function validateEmail(email, error){
   if (!email.value.match(/(@)/) || !email.value.match(/(.)/) || !email.value.match(/(com)/)){
     email.classList += ' error';
     email.classList.remove('success');
+    error.innerText = 'Invalid email address';
     return false;
+  } else if (email.value.match(/[!, #, $, %, ^, &, *, ,, (,),_,+,=,-,<,>,/,|,\,]/)){
+    email.classList += ' error';
+    email.classList.remove('success');
+    error.innerText = `Invalid email address`;
   } else{
     email.classList.remove('error');
     email.classList += ' success';
+    error.innerText = '';
     return true;
   }
 }
@@ -77,44 +83,82 @@ function validateEmail(email){
 //Validate Username
 function validateUsername (){
   let username = document.getElementById('username');
+  let usernameError = document.getElementById('username-error');
   if(username.value === '' || username.value === ' '){
    username.classList += ' error';
    username.classList.remove('success');
+   usernameError.innerText = `Username can't be empty`
    return false;
+  } else if (username.value.match(/[@, ., !, #, $, %, ^, &, *, (,),_,+,=,-,<,>,/,|,\,]/)){
+    username.classList += ' error';
+    username.classList.remove('success');
+    usernameError.innerText = `Username can't include any character`;
   } else{
     username.classList += ' success';
     username.classList.remove('error');
+    usernameError.innerText = '';
     return true;
   }
 }
 
-// validate Password
-function validatePassword(password){
-  if(password.value === '' || password.value === ' ' || password.value.length < 8){
+// validate Login Password
+function validateLoginPassword(){
+  let password = document.getElementById('loginPassword');
+  let passwordError = document.getElementById('login-password-error');
+
+  if(password.value === '' || password.value === ' '){
     password.classList += ' error';
     password.classList.remove('success');
+    passwordError.innerText = `Password can't be empty`
+    return false;
+  } else if(password.value.length < 8){
+    password.classList += ' error';
+    password.classList.remove('success');
+    passwordError.innerText = `Password must be 8 or more characters`
     return false;
   } else{
     password.classList += ' success';
     password.classList.remove('error');
+    passwordError.innerText = '';
     return true;
   }
 }
 
-function comparePasswords(){
+//Validate Signup Password
+
+function validateSignupPassword(){
   let password1 = document.getElementById('password1');
   let password2 = document.getElementById('password2');
-  if(password1.value !== password2.value){
+  let passwordErrorMessage = document.getElementById('signup-password-error');
+
+  if (password1 === '' || password2 === ''){
     password1.classList += ' error';
     password2.classList += ' error';
     password1.classList.remove('success');
     password2.classList.remove('success');
+    passwordErrorMessage.innerText = `Password can't be empty`
     return false;
-  } else{
+  } else if(password1.value < 8 || password2.value < 8){
+    password1.classList += ' error';
+    password1.classList.remove('success');
+    password2.classList += ' error';
+    password2.classList.remove('success');
+    passwordErrorMessage.innerText = `Password must be 8 or more characters`
+    return false;
+  } else if(password1.value !== password2.value){
+    password1.classList += ' error';
+    password2.classList += ' error';
+    password1.classList.remove('success');
+    password2.classList.remove('success');
+    passwordErrorMessage.innerText = 'First password must be the same as second password'
+    return false;
+  }
+  else{
     password1.classList += ' success';
     password2.classList += ' success';
     password1.classList.remove('error');
     password2.classList.remove('error');
+    passwordErrorMessage.innerText = '';
     return true;
   }
 }
@@ -124,22 +168,22 @@ loginBtn.addEventListener('click', login);
 registerBtn.addEventListener('click', register);
 passwordVisibilityLogin.addEventListener('click', loginPasswordToggle);
 passwordVisibilityregister.addEventListener('click', registerPasswordToggle);
+
+//Form Validation Event Handlers
 registrationSumbitBtn.addEventListener('click', (e) =>{
   e.preventDefault();
   let email = document.getElementById('register-email');
-  let password1 = document.getElementById('password1');
-  let password2 = document.getElementById('password2');
+  let emailError = document.getElementById('signup-email-error');
+
   validateUsername();
-  validateEmail(email);
-  validatePassword(password1);
-  validatePassword(password2);
-  comparePasswords();
+  validateEmail(email, emailError);
+  validateSignupPassword();
 });
 
 loginSumbitBtn.addEventListener('click', (e) =>{
   e.preventDefault();
   let email = document.getElementById('login-email');
-  let password = document.getElementById('loginPassword');
-  validateEmail(email);
-  validatePassword(password);
+  let emailError = document.getElementById('login-email-error');
+  validateEmail(email, emailError);
+  validateLoginPassword();
 });
